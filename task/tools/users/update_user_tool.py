@@ -4,7 +4,7 @@ from task.tools.users.base import BaseUserServiceTool
 from task.tools.users.models.user_info import UserUpdate
 
 
-class CreateUserTool(BaseUserServiceTool):
+class UpdateUserTool(BaseUserServiceTool):
 
     @property
     def name(self) -> str:
