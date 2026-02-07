@@ -7,27 +7,38 @@ class SearchUsersTool(BaseUserServiceTool):
 
     @property
     def name(self) -> str:
-        #TODO: Provide tool name as `search_users`
-        raise NotImplementedError()
+        return "search_users"
 
     @property
     def description(self) -> str:
-        #TODO: Provide description of this tool
-        raise NotImplementedError()
+        return "Search for users based on various criteria."
 
     @property
     def input_schema(self) -> dict[str, Any]:
-        #TODO:
-        # Provide tool params Schema:
-        # - name: str
-        # - surname: str
-        # - email: str
-        # - gender: str
-        # None of them are required (see UserClient.search_users method)
-        raise NotImplementedError()
+        return {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "First name of the user."
+                },
+                "surname": {
+                    "type": "string",
+                    "description": "Last name of the user."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email address of the user."
+                },
+                "gender": {
+                    "type": "string",
+                    "description": "Gender of the user."
+                }
+            }
+        }
 
     def execute(self, arguments: dict[str, Any]) -> str:
-        #TODO:
-        # 1. Call user_client search_users (with `**arguments`) and return its results
-        # 2. Optional: You can wrap it with `try-except` and return error as string `f"Error while searching users: {str(e)}"`
-        raise NotImplementedError()
+        try:
+            return str(self.user_client.search_users(**arguments))
+        except Exception as e:
+            return f"Error while searching users: {str(e)}"

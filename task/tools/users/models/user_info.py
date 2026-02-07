@@ -26,7 +26,7 @@ class UserCreate(BaseModel):
     gender: Optional[str] = None
     company: Optional[str] = None
     salary: Optional[float] = None
-    about_me: str
+    about_me: Optional[str] = None
     credit_card: Optional[CreditCard] = None
 
 
